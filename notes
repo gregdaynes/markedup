@@ -1,0 +1,115 @@
+Asset Document
+  _id
+  name
+  type
+  source
+  meta: {
+    version
+    timestamp
+  }
+  marks: [
+    {
+      _id
+      author
+      ...fabric attributes
+    }
+  ]
+  comments: [
+    {
+      _id
+      _markId
+      author
+      body
+      comments: [
+        {
+          _id
+          author
+          body
+        },
+        {
+          _id
+          author
+          body
+        }
+      ]
+    }
+  ]
+
+
+{
+  action: asset-created
+  meta: {
+    _id: action uuid
+    _authorId: author uuid
+  }
+  payload: {
+    _id: asset-uuid
+    name: some asset
+    type: image
+    source: https://s3...
+    description: some sort of words
+  }
+}
+
+{
+  action: asset-updated
+  meta: {
+    _id: action uuid
+    _authorId: author uuid
+    change_summary: changed the image
+  }
+  payload: {
+    _id: asset-uuid
+    source: https://s4...
+  }
+}
+
+{
+  action: comment-added
+  meta: {
+    _id: action uuid
+    _authorId: author-uuid
+  }
+  payload: {
+    _id: comment-uuid
+    _assetId: asset-uuid
+    _markId: mark-uuid
+    body: some sort of comment
+  }
+}
+
+{
+  action: comment-added
+  meta: {
+    _id: action uuid
+    _authorId: author-uuid
+  }
+  payload: {
+    _id: comment-uuid
+    _commentId: parent-uuid
+    body: some sort of comment
+  }
+}
+
+{
+  action: mark-added
+  meta: {
+    _id: action uuid
+    _authorId: author-uuid
+  }
+  payload: {
+    _id: mark-uuid
+    ...fabric attributes
+  }
+}
+
+{
+  action: mark-removed
+  meta: {
+    _id: action uuid
+    _authorId: author-uuid
+  }
+  payload: {
+    _id: mark-uuid
+  }
+}
