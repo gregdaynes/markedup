@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node-dev bin/www | pino-pretty",
-    "test": "tap ./src"
+    "test": "tap --reporter min --no-color"
   },
   "repository": {
     "type": "git",
