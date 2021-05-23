@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "start": "node-dev bin/www | pino-pretty",
     "test": "tap ./src"
   },
   "repository": {
