@@ -8,12 +8,21 @@ test("command endpoint", async (t) => {
 
   const app = await build()
 
+  function auth() {
+    return app.jwt.sign({
+      name: "test-user",
+    })
+  }
+
   function request(body = {}) {
     return app
       .inject({
         method: "POST",
         url: "/command",
         body,
+        headers: {
+          Authorization: "Bearer " + auth(),
+        },
       })
       .then((res) => ({ status: res.statusCode, ...res.json() }))
   }
