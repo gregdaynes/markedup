@@ -8,6 +8,7 @@ const {
 module.exports = fastifyPlugin(async (app) => {
   app.post("/command", {
     preValidation: [app.authenticate],
+    preHandler: [app.appendMeta],
     schema: {
       body: CommandSchema,
     },
