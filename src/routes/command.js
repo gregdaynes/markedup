@@ -1,21 +1,22 @@
-const fastifyPlugin = require("fastify-plugin")
+const fastifyPlugin = require('fastify-plugin')
 
 const {
   command: CommandSchema,
-  response: ResponseSchema,
-} = require("../schemas")
+  response: ResponseSchema
+} = require('../schemas')
 
 module.exports = fastifyPlugin(async (app) => {
-  app.post("/command", {
+  app.post('/command', {
     preValidation: [app.authenticate],
     preHandler: [app.appendMeta],
     schema: {
       body: CommandSchema,
+      response: ResponseSchema
     },
     handler(request, reply) {
       return {
-        message: "hello world",
+        message: 'hello world'
       }
-    },
+    }
   })
 })
