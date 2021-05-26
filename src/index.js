@@ -1,12 +1,13 @@
 const autoLoad = require('fastify-autoload')
 const fastify = require('fastify')
 const path = require('path')
+const database = require('./lib/database')
 
 module.exports = async (opts) => {
   const app = fastify(opts)
 
   app.addHook('onClose', async () => {
-    // cleanup
+    await database.destroy()
   })
 
   app.register(autoLoad, {
