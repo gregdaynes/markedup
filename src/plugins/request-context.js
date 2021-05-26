@@ -1,11 +1,11 @@
-const fastifyPlugin = require("fastify-plugin")
-const { fastifyRequestContextPlugin } = require("fastify-request-context")
+const fastifyPlugin = require('fastify-plugin')
+const { fastifyRequestContextPlugin } = require('fastify-request-context')
 
 module.exports = fastifyPlugin(async (app) => {
   app.register(fastifyRequestContextPlugin, {
-    hook: "onRequest",
+    hook: 'onRequest',
     defaultStoreValues: {
-      timestamp: new Date().valueOf(),
-    },
+      timestamp: new Date().valueOf()
+    }
   })
 })
